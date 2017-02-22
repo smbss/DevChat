@@ -15,13 +15,16 @@
 		1675A9801E00A68300B80903 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1675A97E1E00A68300B80903 /* LaunchScreen.storyboard */; };
 		168505E81E288B4C005B4537 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168505E71E288B4C005B4537 /* VideoViewController.swift */; };
 		168505EA1E288D80005B4537 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168505E91E288D80005B4537 /* PhotoViewController.swift */; };
+		1ED6EBB49F5E56145253E11A /* Pods_DevChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A1DF713C2EA28F4E14C77B /* Pods_DevChat.framework */; };
 		AA9F97211E5D082D0074F308 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F971D1E5D082D0074F308 /* PreviewView.swift */; };
 		AA9F97221E5D082D0074F308 /* SwiftyCamButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F971E1E5D082D0074F308 /* SwiftyCamButton.swift */; };
 		AA9F97231E5D082D0074F308 /* SwiftyCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F971F1E5D082D0074F308 /* SwiftyCamViewController.swift */; };
 		AA9F97241E5D082D0074F308 /* SwiftyCamViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F97201E5D082D0074F308 /* SwiftyCamViewControllerDelegate.swift */; };
+		AA9F97291E5D0CC00074F308 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA9F97281E5D0CC00074F308 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07C6F3BA237D01331222D814 /* Pods-DevChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-DevChat/Pods-DevChat.release.xcconfig"; sourceTree = "<group>"; };
 		16298B551E2703DC0056D413 /* SwiftyRecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyRecordButton.swift; sourceTree = "<group>"; };
 		1675A9721E00A68300B80903 /* DevChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1675A9751E00A68300B80903 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -32,10 +35,13 @@
 		1675A9811E00A68300B80903 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		168505E71E288B4C005B4537 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		168505E91E288D80005B4537 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		218AAECA2044BFAA6C884576 /* Pods-DevChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DevChat/Pods-DevChat.debug.xcconfig"; sourceTree = "<group>"; };
 		AA9F971D1E5D082D0074F308 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		AA9F971E1E5D082D0074F308 /* SwiftyCamButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamButton.swift; sourceTree = "<group>"; };
 		AA9F971F1E5D082D0074F308 /* SwiftyCamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamViewController.swift; sourceTree = "<group>"; };
 		AA9F97201E5D082D0074F308 /* SwiftyCamViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamViewControllerDelegate.swift; sourceTree = "<group>"; };
+		AA9F97281E5D0CC00074F308 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C7A1DF713C2EA28F4E14C77B /* Pods_DevChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ED6EBB49F5E56145253E11A /* Pods_DevChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +61,8 @@
 			children = (
 				1675A9741E00A68300B80903 /* DevChat */,
 				1675A9731E00A68300B80903 /* Products */,
+				9516D16B0FB9849D6C201003 /* Pods */,
+				9DCDEA784D76BF27669AD5A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,13 +77,14 @@
 		1675A9741E00A68300B80903 /* DevChat */ = {
 			isa = PBXGroup;
 			children = (
-				AA9F97251E5D09D10074F308 /* Controller */,
 				AA9F97271E5D09EB0074F308 /* Model */,
-				1675A9911E00A74F00B80903 /* SwiftyCam */,
 				AA9F97261E5D09E20074F308 /* View */,
+				AA9F97251E5D09D10074F308 /* Controller */,
+				1675A9911E00A74F00B80903 /* SwiftyCam */,
 				1675A9751E00A68300B80903 /* AppDelegate.swift */,
 				1675A97C1E00A68300B80903 /* Assets.xcassets */,
 				1675A9811E00A68300B80903 /* Info.plist */,
+				AA9F97281E5D0CC00074F308 /* GoogleService-Info.plist */,
 				1675A97E1E00A68300B80903 /* LaunchScreen.storyboard */,
 				1675A9791E00A68300B80903 /* Main.storyboard */,
 			);
@@ -92,6 +102,23 @@
 			path = SwiftyCam;
 			sourceTree = "<group>";
 		};
+		9516D16B0FB9849D6C201003 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				218AAECA2044BFAA6C884576 /* Pods-DevChat.debug.xcconfig */,
+				07C6F3BA237D01331222D814 /* Pods-DevChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9DCDEA784D76BF27669AD5A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7A1DF713C2EA28F4E14C77B /* Pods_DevChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AA9F97251E5D09D10074F308 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,7 +126,6 @@
 				168505E91E288D80005B4537 /* PhotoViewController.swift */,
 				168505E71E288B4C005B4537 /* VideoViewController.swift */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -108,7 +134,6 @@
 			children = (
 				16298B551E2703DC0056D413 /* SwiftyRecordButton.swift */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -116,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -127,9 +151,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1675A9841E00A68300B80903 /* Build configuration list for PBXNativeTarget "DevChat" */;
 			buildPhases = (
+				9D9F229326ED233AC53FB5F6 /* [CP] Check Pods Manifest.lock */,
 				1675A96E1E00A68300B80903 /* Sources */,
 				1675A96F1E00A68300B80903 /* Frameworks */,
 				1675A9701E00A68300B80903 /* Resources */,
+				7E2EF2F710F575F9F9231FE7 /* [CP] Embed Pods Frameworks */,
+				514429ACB478523044BF6A63 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,12 +208,61 @@
 			buildActionMask = 2147483647;
 			files = (
 				1675A9801E00A68300B80903 /* LaunchScreen.storyboard in Resources */,
+				AA9F97291E5D0CC00074F308 /* GoogleService-Info.plist in Resources */,
 				1675A97D1E00A68300B80903 /* Assets.xcassets in Resources */,
 				1675A97B1E00A68300B80903 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		514429ACB478523044BF6A63 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DevChat/Pods-DevChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E2EF2F710F575F9F9231FE7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DevChat/Pods-DevChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D9F229326ED233AC53FB5F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1675A96E1E00A68300B80903 /* Sources */ = {
@@ -324,6 +400,7 @@
 		};
 		1675A9851E00A68300B80903 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 218AAECA2044BFAA6C884576 /* Pods-DevChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WN5533YL4C;
@@ -338,6 +415,7 @@
 		};
 		1675A9861E00A68300B80903 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07C6F3BA237D01331222D814 /* Pods-DevChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WN5533YL4C;

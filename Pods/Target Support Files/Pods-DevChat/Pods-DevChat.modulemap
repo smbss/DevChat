@@ -1,0 +1,6 @@
+framework module Pods_DevChat {
+  umbrella header "Pods-DevChat-umbrella.h"
+
+  export *
+  module * { export * }
+}
