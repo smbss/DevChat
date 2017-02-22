@@ -21,14 +21,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="4qF-o2-XxU" kind="presentation" identifier="LoginVC" id="oMk-al-V17"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--LoginVC-->
         <scene sceneID="7SQ-1I-3YZ">
             <objects>
-                <viewController id="4qF-o2-XxU" sceneMemberID="viewController">
+                <viewController id="4qF-o2-XxU" customClass="LoginVC" customModule="DevChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3eW-K2-yLz"/>
                         <viewControllerLayoutGuide type="bottom" id="hoU-Qn-pBf"/>
@@ -161,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXU-is-wHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="754" y="35"/>
+            <point key="canvasLocation" x="746" y="54"/>
         </scene>
     </scenes>
     <resources>

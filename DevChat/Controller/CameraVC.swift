@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     
@@ -27,6 +28,12 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        guard FIRAuth.auth()?.currentUser != nil else {
+                // Load Log in VC
+            performSegue(withIdentifier: "LoginVC", sender: nil)
+            return
+        }
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {

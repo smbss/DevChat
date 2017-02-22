@@ -18,6 +18,7 @@
 		1ED6EBB49F5E56145253E11A /* Pods_DevChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A1DF713C2EA28F4E14C77B /* Pods_DevChat.framework */; };
 		AA3D78661E5DF43B005CD022 /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D78651E5DF43B005CD022 /* RoundTextField.swift */; };
 		AA3D78681E5DF483005CD022 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D78671E5DF483005CD022 /* RoundedButton.swift */; };
+		AA3D786A1E5DFE26005CD022 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D78691E5DFE26005CD022 /* LoginVC.swift */; };
 		AA9F97211E5D082D0074F308 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F971D1E5D082D0074F308 /* PreviewView.swift */; };
 		AA9F97221E5D082D0074F308 /* SwiftyCamButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F971E1E5D082D0074F308 /* SwiftyCamButton.swift */; };
 		AA9F97231E5D082D0074F308 /* SwiftyCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F971F1E5D082D0074F308 /* SwiftyCamViewController.swift */; };
@@ -40,6 +41,7 @@
 		218AAECA2044BFAA6C884576 /* Pods-DevChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DevChat/Pods-DevChat.debug.xcconfig"; sourceTree = "<group>"; };
 		AA3D78651E5DF43B005CD022 /* RoundTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
 		AA3D78671E5DF483005CD022 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		AA3D78691E5DFE26005CD022 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		AA9F971D1E5D082D0074F308 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		AA9F971E1E5D082D0074F308 /* SwiftyCamButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamButton.swift; sourceTree = "<group>"; };
 		AA9F971F1E5D082D0074F308 /* SwiftyCamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				1675A9771E00A68300B80903 /* CameraVC.swift */,
+				AA3D78691E5DFE26005CD022 /* LoginVC.swift */,
 				168505E91E288D80005B4537 /* PhotoViewController.swift */,
 				168505E71E288B4C005B4537 /* VideoViewController.swift */,
 			);
@@ -277,6 +280,7 @@
 			files = (
 				1675A9781E00A68300B80903 /* CameraVC.swift in Sources */,
 				AA9F97221E5D082D0074F308 /* SwiftyCamButton.swift in Sources */,
+				AA3D786A1E5DFE26005CD022 /* LoginVC.swift in Sources */,
 				AA3D78661E5DF43B005CD022 /* RoundTextField.swift in Sources */,
 				168505E81E288B4C005B4537 /* VideoViewController.swift in Sources */,
 				1675A9761E00A68300B80903 /* AppDelegate.swift in Sources */,
