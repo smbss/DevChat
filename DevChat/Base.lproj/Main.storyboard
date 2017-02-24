@@ -167,11 +167,12 @@
                     <connections>
                         <outlet property="emailField" destination="ty2-29-dbm" id="iWJ-cw-KGa"/>
                         <outlet property="passwordField" destination="OzM-Qr-ifO" id="5ev-vy-t3u"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="LoginToCamera" id="AQM-GC-BYJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXU-is-wHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746" y="54"/>
+            <point key="canvasLocation" x="791" y="72"/>
         </scene>
     </scenes>
     <resources>

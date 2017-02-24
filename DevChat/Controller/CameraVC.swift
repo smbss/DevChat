@@ -28,17 +28,19 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("CurrentUser: \(FIRAuth.auth()?.currentUser)")
         
-        try! FIRAuth.auth()!.signOut()
+        print("CurrentUserUID: \(FIRAuth.auth()?.currentUser?.uid)")
+        
+            // [!] Logout for debuging
+        //try! FIRAuth.auth()!.signOut()
         
         guard FIRAuth.auth()?.currentUser != nil else {
                 // Load Log in VC
             performSegue(withIdentifier: "LoginVC", sender: nil)
             return
         }
-        print("CurrentUser2: \(FIRAuth.auth()?.currentUser)")
-        performSegue(withIdentifier: "LoginVC", sender: nil)
+            // [!] Presenting VC to avoid camera crash on simulator
+        //performSegue(withIdentifier: "LoginVC", sender: nil)
 
     }
     

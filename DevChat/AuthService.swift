@@ -32,16 +32,17 @@ class AuthService {
                             } else {
                                     // Checking if the user was created with unique user ID
                                 if user?.uid != nil {
-                                    print("uid: \(user?.uid)")
+                                    print("Successfully created UID: \(user?.uid)")
                                         // Saving the user to the Database
-                                    DataService.instance.saveUser(uid: user!.uid)
+                                    DataService.instance.saveUser(uid: user!.uid, email: email, pass: password)
                                         // Sign in
                                     FIRAuth.auth()?.signIn(withEmail: email, password: email, completion: { (user, error) in
-                                        print("AuthService.login.signIn user: \(user) AuthService.error: \(error) code: \(error!._code)" )
+                                        print("AuthService.login.createUser.signIn user: \(user) AuthService.error: \(error) code: \(error!._code)" )
                                         if error != nil {
-                                            // Show error to user
+                                                // Show error to user
                                         } else {
-                                            // Successfully logged in
+                                                // Successfully logged in
+                                            print("Successfully logged in UID: \(FIRAuth.auth()?.currentUser?.uid)")
                                         }
                                     })
                                 }
@@ -53,6 +54,7 @@ class AuthService {
                 }
             } else {
                 // Successfully logged in
+                print("Successfully logged in UID: \(FIRAuth.auth()?.currentUser?.uid)")
             }
         })
     }

@@ -23,8 +23,8 @@ class DataService {
         return FIRDatabase.database().reference()
     }
     
-    func saveUser(uid: String) {
-        let profile: Dictionary<String, AnyObject> = ["firstName": "" as AnyObject, "lastName": "" as AnyObject]
+    func saveUser(uid: String, email: String, pass: String) {
+        let profile: Dictionary<String, AnyObject> = ["firstName": "" as AnyObject, "lastName": "" as AnyObject, "email": email as AnyObject, "pass": pass as AnyObject]
             // Saving the profile Dictionary<String, AnyObject> to Firebase
         mainRef.child("users").child(uid).child("profile").setValue(profile)
     }
