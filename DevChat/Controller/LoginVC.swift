@@ -8,16 +8,15 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailField: RoundTextField!
-    
     @IBOutlet weak var passwordField: RoundTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        emailField.delegate = self
+        passwordField.delegate = self
     }
 
     @IBAction func loginPressed(_ sender: AnyObject) {
@@ -25,6 +24,7 @@ class LoginVC: UIViewController {
             
                 // Call the login service
             AuthService.instance.login(email: email, password: pass)
+            print("AuthService.instance.login \(email) and \(pass)")
             
         } else {
             let alert = UIAlertController(title: "Username and Password Required", message: "You must enter both a username and a password", preferredStyle: .alert)
@@ -33,4 +33,9 @@ class LoginVC: UIViewController {
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        return true
+    }
 }

@@ -20,41 +20,40 @@ class AuthService {
     
     func login(email: String, password: String) {
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-            
+            print("AuthService.login user: \(user) AuthService.error: \(error) " )
             if error != nil {
                 if let errorCode = FIRAuthErrorCode(rawValue: error!._code) {
+                    print("Error Code: \(errorCode.rawValue)")
                     if errorCode == .errorCodeUserNotFound {
                         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-                            
+                            print("AuthService.login.createUser user: \(user) AuthService.error: \(error) " )
                             if error != nil {
                                 // Show error to user
                             } else {
                                     // Checking if the user was created with unique user ID
                                 if user?.uid != nil {
+                                    print("uid: \(user?.uid)")
+                                        // Saving the user to the Database
+                                    DataService.instance.saveUser(uid: user!.uid)
                                         // Sign in
                                     FIRAuth.auth()?.signIn(withEmail: email, password: email, completion: { (user, error) in
-                                        
+                                        print("AuthService.login.signIn user: \(user) AuthService.error: \(error) code: \(error!._code)" )
                                         if error != nil {
                                             // Show error to user
                                         } else {
                                             // Successfully logged in
                                         }
-                                        
                                     })
                                 }
                             }
-                            
                         })
                     }
-                    
                 } else {
                     // Handle all other auth errors
                 }
             } else {
                 // Successfully logged in
             }
-            
         })
     }
-    
 }

@@ -25,6 +25,7 @@
 		AA9F97231E5D082D0074F308 /* SwiftyCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F971F1E5D082D0074F308 /* SwiftyCamViewController.swift */; };
 		AA9F97241E5D082D0074F308 /* SwiftyCamViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F97201E5D082D0074F308 /* SwiftyCamViewControllerDelegate.swift */; };
 		AA9F97291E5D0CC00074F308 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA9F97281E5D0CC00074F308 /* GoogleService-Info.plist */; };
+		AAF230041E5E178B00DABE14 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF230031E5E178B00DABE14 /* DataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		AA9F971F1E5D082D0074F308 /* SwiftyCamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamViewController.swift; sourceTree = "<group>"; };
 		AA9F97201E5D082D0074F308 /* SwiftyCamViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamViewControllerDelegate.swift; sourceTree = "<group>"; };
 		AA9F97281E5D0CC00074F308 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AAF230031E5E178B00DABE14 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C7A1DF713C2EA28F4E14C77B /* Pods_DevChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				AA3D786C1E5E053D005CD022 /* AuthService.swift */,
+				AAF230031E5E178B00DABE14 /* DataService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1675A9781E00A68300B80903 /* CameraVC.swift in Sources */,
+				AAF230041E5E178B00DABE14 /* DataService.swift in Sources */,
 				AA9F97221E5D082D0074F308 /* SwiftyCamButton.swift in Sources */,
 				AA3D786A1E5DFE26005CD022 /* LoginVC.swift in Sources */,
 				AA3D78661E5DF43B005CD022 /* RoundTextField.swift in Sources */,
