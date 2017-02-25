@@ -11,6 +11,7 @@ import FirebaseAuth
 
 class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     
+    var signOutButton: UIButton!
     var flipCameraButton: UIButton!
     var flashButton: UIButton!
     var captureButton: SwiftyRecordButton!
@@ -20,29 +21,30 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
         cameraDelegate = self
         maximumVideoDuration = 10.0
         addButtons()
+        print("CurrentUserUID: \(FIRAuth.auth()?.currentUser?.uid)")
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        print("CurrentUserUID: \(FIRAuth.auth()?.currentUser?.uid)")
-        
-            // [!] Logout for debuging
-        //try! FIRAuth.auth()!.signOut()
-        
-        guard FIRAuth.auth()?.currentUser != nil else {
-                // Load Log in VC
-            performSegue(withIdentifier: "LoginVC", sender: nil)
-            return
-        }
-            // [!] Presenting VC to avoid camera crash on simulator
-        //performSegue(withIdentifier: "LoginVC", sender: nil)
-
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        print("CurrentUserUID: \(FIRAuth.auth()?.currentUser?.uid)")
+//        
+//            // [!] Logout for debuging
+//        //try! FIRAuth.auth()!.signOut()
+//        
+//        guard FIRAuth.auth()?.currentUser != nil else {
+//                // Load Log in VC
+//            performSegue(withIdentifier: "LoginVC", sender: nil)
+//            return
+//        }
+//            // [!] Presenting VC to avoid camera crash on simulator
+//        //performSegue(withIdentifier: "LoginVC", sender: nil)
+//
+//    }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
         let newVC = PhotoViewController(image: photo)
@@ -99,6 +101,12 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
         print(camera)
     }
     
+    func showAlert(title: String, message: String, buttonText: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: buttonText, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
     @objc private func cameraSwitchAction(_ sender: Any) {
         switchCamera()
     }
@@ -111,6 +119,18 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
         } else {
             flashButton.setImage(#imageLiteral(resourceName: "flashOutline"), for: UIControlState())
         }
+    }
+    
+    @objc private func signOutButtonPressed(_ sender: Any) {
+        do {
+            try FIRAuth.auth()?.signOut()
+            print("Successfully signed out")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+            showAlert(title: "Error signing out", message: signOutError.localizedDescription, buttonText: "Ok")
+        }
+        //performSegue(withIdentifier: "LoginVC", sender: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     private func addButtons() {
@@ -129,6 +149,11 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
         flashButton.setImage(#imageLiteral(resourceName: "flashOutline"), for: UIControlState())
         flashButton.addTarget(self, action: #selector(toggleFlashAction(_:)), for: .touchUpInside)
         self.view.addSubview(flashButton)
+        
+        signOutButton = UIButton(frame: CGRect(x: test, y: 50.0, width: 50.0, height: 50.0))
+        signOutButton.setImage(#imageLiteral(resourceName: "focus"), for: UIControlState())
+        signOutButton.addTarget(self, action: #selector(signOutButtonPressed(_:)), for: .touchUpInside)
+        self.view.addSubview(signOutButton)
     }
 }
 
