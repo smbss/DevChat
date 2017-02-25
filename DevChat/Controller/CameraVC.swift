@@ -28,24 +28,6 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
         return true
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        
-//        print("CurrentUserUID: \(FIRAuth.auth()?.currentUser?.uid)")
-//        
-//            // [!] Logout for debuging
-//        //try! FIRAuth.auth()!.signOut()
-//        
-//        guard FIRAuth.auth()?.currentUser != nil else {
-//                // Load Log in VC
-//            performSegue(withIdentifier: "LoginVC", sender: nil)
-//            return
-//        }
-//            // [!] Presenting VC to avoid camera crash on simulator
-//        //performSegue(withIdentifier: "LoginVC", sender: nil)
-//
-//    }
-    
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
         let newVC = PhotoViewController(image: photo)
         self.present(newVC, animated: true, completion: nil)
@@ -129,7 +111,6 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
             print ("Error signing out: %@", signOutError)
             showAlert(title: "Error signing out", message: signOutError.localizedDescription, buttonText: "Ok")
         }
-        //performSegue(withIdentifier: "LoginVC", sender: nil)
         dismiss(animated: true, completion: nil)
     }
     

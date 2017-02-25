@@ -20,6 +20,9 @@
 		AA3D78681E5DF483005CD022 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D78671E5DF483005CD022 /* RoundedButton.swift */; };
 		AA3D786A1E5DFE26005CD022 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D78691E5DFE26005CD022 /* LoginVC.swift */; };
 		AA3D786D1E5E053D005CD022 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D786C1E5E053D005CD022 /* AuthService.swift */; };
+		AA9A25E51E620A6200C0119B /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9A25E41E620A6200C0119B /* UsersVC.swift */; };
+		AA9A25E71E62151100C0119B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9A25E61E62151100C0119B /* UserCell.swift */; };
+		AA9A25E91E621C0400C0119B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9A25E81E621C0400C0119B /* User.swift */; };
 		AA9F97211E5D082D0074F308 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F971D1E5D082D0074F308 /* PreviewView.swift */; };
 		AA9F97221E5D082D0074F308 /* SwiftyCamButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F971E1E5D082D0074F308 /* SwiftyCamButton.swift */; };
 		AA9F97231E5D082D0074F308 /* SwiftyCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F971F1E5D082D0074F308 /* SwiftyCamViewController.swift */; };
@@ -45,6 +48,9 @@
 		AA3D78671E5DF483005CD022 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		AA3D78691E5DFE26005CD022 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		AA3D786C1E5E053D005CD022 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		AA9A25E41E620A6200C0119B /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
+		AA9A25E61E62151100C0119B /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		AA9A25E81E621C0400C0119B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = DevChat/View/User.swift; sourceTree = SOURCE_ROOT; };
 		AA9F971D1E5D082D0074F308 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		AA9F971E1E5D082D0074F308 /* SwiftyCamButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamButton.swift; sourceTree = "<group>"; };
 		AA9F971F1E5D082D0074F308 /* SwiftyCamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +152,7 @@
 				AA3D78691E5DFE26005CD022 /* LoginVC.swift */,
 				168505E91E288D80005B4537 /* PhotoViewController.swift */,
 				168505E71E288B4C005B4537 /* VideoViewController.swift */,
+				AA9A25E41E620A6200C0119B /* UsersVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -156,6 +163,7 @@
 				16298B551E2703DC0056D413 /* SwiftyRecordButton.swift */,
 				AA3D78651E5DF43B005CD022 /* RoundTextField.swift */,
 				AA3D78671E5DF483005CD022 /* RoundedButton.swift */,
+				AA9A25E61E62151100C0119B /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -163,6 +171,7 @@
 		AA9F97271E5D09EB0074F308 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AA9A25E81E621C0400C0119B /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -297,8 +306,11 @@
 				AA9F97221E5D082D0074F308 /* SwiftyCamButton.swift in Sources */,
 				AA3D786A1E5DFE26005CD022 /* LoginVC.swift in Sources */,
 				AA3D78661E5DF43B005CD022 /* RoundTextField.swift in Sources */,
+				AA9A25E51E620A6200C0119B /* UsersVC.swift in Sources */,
 				168505E81E288B4C005B4537 /* VideoViewController.swift in Sources */,
+				AA9A25E91E621C0400C0119B /* User.swift in Sources */,
 				1675A9761E00A68300B80903 /* AppDelegate.swift in Sources */,
+				AA9A25E71E62151100C0119B /* UserCell.swift in Sources */,
 				AA3D786D1E5E053D005CD022 /* AuthService.swift in Sources */,
 				AA9F97211E5D082D0074F308 /* PreviewView.swift in Sources */,
 				AA3D78681E5DF483005CD022 /* RoundedButton.swift in Sources */,
