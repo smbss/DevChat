@@ -42,18 +42,6 @@ class AuthService {
                                         // Saving the user to the Database
                                     DataService.instance.saveUser(uid: user!.uid, email: email, pass: password)
                                     onComplete?(nil, user)
-                                        // Sign in
-//                                    FIRAuth.auth()?.signIn(withEmail: email, password: email, completion: { (user, error) in
-//                                    print("AuthService.login.createUser.signIn user: \(user) AuthService.error: \(error) code: \(error!._code)" )
-//                                        if error != nil {
-//                                                // Error signing in the created user
-//                                            self.handleFirebase(error: error as! NSError, onComplete: onComplete)
-//                                        } else {
-//                                                // Successfully logged in the created user
-//                                            print("Successfully logged in created user UID: \(FIRAuth.auth()?.currentUser?.uid)")
-//                                            onComplete?(nil, user)
-//                                        }
-//                                    })
                                 }
                             }
                         })

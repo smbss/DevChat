@@ -15,8 +15,10 @@ class PhotoViewController: UIViewController {
     }
     
     private var backgroundImage: UIImage
+    private var discardImage: Bool
     
     init(image: UIImage) {
+        self.discardImage = false
         self.backgroundImage = image
         super.init(nibName: nil, bundle: nil)
     }
@@ -35,9 +37,35 @@ class PhotoViewController: UIViewController {
         cancelButton.setImage(#imageLiteral(resourceName: "cancel"), for: UIControlState())
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         view.addSubview(cancelButton)
+        let sendButton = UIButton(frame: CGRect(x: view.frame.width/2 + 120, y: 10.0, width: 30, height: 30))
+        sendButton.setImage(#imageLiteral(resourceName: "send_snap"), for: UIControlState())
+        sendButton.addTarget(self, action: #selector(sendSnap), for: .touchUpInside)
+        view.addSubview(sendButton)
+    }
+    
+    func sendSnap() {
+        dismiss(animated: true, completion: nil)
     }
     
     func cancel() {
+        discardImage = true
+        if let usersVC = presentedViewController as? UsersVC {
+            if discardImage {
+                usersVC.imageData = nil
+            }
+        }
         dismiss(animated: true, completion: nil)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("ViewWillDisappear - Photo § Discard: \(discardImage)")
+        if let usersVC = presentingViewController as? CameraVC {
+            guard discardImage else {
+                usersVC.imageData = self.backgroundImage
+                usersVC.mediaConfirmed = true
+                return
+            }
+        }
+    }
+    
 }

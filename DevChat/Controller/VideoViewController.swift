@@ -17,10 +17,12 @@ class VideoViewController: UIViewController {
     }
     
     private var videoURL: URL
+    private var discardVideo: Bool
     var player: AVPlayer?
     var playerController : AVPlayerViewController?
     
     init(videoURL: URL) {
+        self.discardVideo = false
         self.videoURL = videoURL
         super.init(nibName: nil, bundle: nil)
     }
@@ -51,6 +53,12 @@ class VideoViewController: UIViewController {
         cancelButton.setImage(#imageLiteral(resourceName: "cancel"), for: UIControlState())
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         view.addSubview(cancelButton)
+        let sendButton = UIButton(frame: CGRect(x: view.frame.width/2 + 120, y: 10.0, width: 30, height: 30))
+        sendButton.setImage(#imageLiteral(resourceName: "send_snap"), for: UIControlState())
+        sendButton.addTarget(self, action: #selector(sendSnap), for: .touchUpInside)
+        view.addSubview(sendButton)
+        print("view.frame.width: \(view.frame.width)")
+        print("view.frame.size.width: \(view.frame.width)")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,8 +66,24 @@ class VideoViewController: UIViewController {
         player?.play()
     }
     
-    func cancel() {
+    func sendSnap() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func cancel() {
+        discardVideo = true
+        dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("ViewWillDisappear - Video § Discard: \(discardVideo)")
+        if let usersVC = self.presentingViewController as? CameraVC {
+            guard discardVideo else {
+                usersVC.videoURL = self.videoURL
+                usersVC.mediaConfirmed = true
+                return
+            }
+        }
     }
     
     @objc fileprivate func playerItemDidReachEnd(_ notification: Notification) {

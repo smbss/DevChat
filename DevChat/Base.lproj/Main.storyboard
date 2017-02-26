@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mlm-Ck-937">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4qF-o2-XxU">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,6 +23,7 @@
                     </view>
                     <connections>
                         <segue destination="4qF-o2-XxU" kind="presentation" identifier="LoginVC" id="oMk-al-V17"/>
+                        <segue destination="mlm-Ck-937" kind="presentation" identifier="CameraToUserList" id="Oth-xt-D4H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -197,7 +198,20 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="425-aZ-zhh"/>
+                                    <navigationItem title="Title" id="425-aZ-zhh">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="camera" id="Zlo-Q7-6IX">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="backToCamera:" destination="mlm-Ck-937" id="fQE-GE-TlY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" image="send_snap" id="nCR-0N-E5E">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="sendButtonPressed:" destination="mlm-Ck-937" id="9DE-JH-7iN"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pa3-J7-g1L">
@@ -268,5 +282,6 @@
     <resources>
         <image name="Icon" width="57" height="57"/>
         <image name="background" width="2448" height="3264"/>
+        <image name="send_snap" width="24" height="23"/>
     </resources>
 </document>

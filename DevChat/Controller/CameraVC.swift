@@ -11,21 +11,69 @@ import FirebaseAuth
 
 class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     
+    var mediaConfirmed: Bool!
+    var userListButton: UIButton!
     var signOutButton: UIButton!
     var flipCameraButton: UIButton!
     var flashButton: UIButton!
     var captureButton: SwiftyRecordButton!
+    
+    private var _imageData: UIImage?
+    private var _videoURL: URL?
+    
+    var imageData: UIImage? {
+        set {
+            _imageData = newValue
+        } get {
+            return _imageData
+        }
+    }
+    
+    var videoURL: URL? {
+        set {
+            _videoURL = newValue
+        } get {
+            return _videoURL
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cameraDelegate = self
         maximumVideoDuration = 10.0
         addButtons()
+        mediaConfirmed = false
         print("CurrentUserUID: \(FIRAuth.auth()?.currentUser?.uid)")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        print("VideoURL: \(videoURL)")
+        print("ImageData: \(imageData)")
+        guard !mediaConfirmed else {
+            if let video = videoURL {
+                performSegue(withIdentifier: "CameraToUserList", sender: video)
+            } else if let image = imageData {
+                performSegue(withIdentifier: "CameraToUserList", sender: image)
+            }
+            return
+        }
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let usersVC = segue.destination as? UsersVC {
+            if let imageData = sender as? UIImage {
+                usersVC.imageData = imageData
+                self._imageData = nil
+            } else if let videoURL = sender as? URL {
+                usersVC.videoURL = videoURL
+                self._videoURL = nil
+            }
+        }
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
@@ -103,6 +151,10 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
         }
     }
     
+    @objc private func userListButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "CameraToUserList", sender: nil)
+    }
+    
     @objc private func signOutButtonPressed(_ sender: Any) {
         do {
             try FIRAuth.auth()?.signOut()
@@ -135,6 +187,11 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
         signOutButton.setImage(#imageLiteral(resourceName: "focus"), for: UIControlState())
         signOutButton.addTarget(self, action: #selector(signOutButtonPressed(_:)), for: .touchUpInside)
         self.view.addSubview(signOutButton)
+        
+        userListButton = UIButton(frame: CGRect(x: (((view.frame.width / 2 - 37.5) / 2) - 15.0), y: 50.0, width: 50.0, height: 50.0))
+        userListButton.setImage(#imageLiteral(resourceName: "cancel"), for: UIControlState())
+        userListButton.addTarget(self, action: #selector(userListButtonPressed(_:)), for: .touchUpInside)
+        self.view.addSubview(userListButton)
     }
 }
 

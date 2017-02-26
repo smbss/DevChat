@@ -40,7 +40,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     self.showAlert(title: "Authentication Error", message: errMsg! , buttonText: "Ok")
                     return
                 }
-                //self.dismiss(animated: true, completion: nil)
                 self.performSegue(withIdentifier: "LoginToCamera", sender: nil)
             })
         } else {
