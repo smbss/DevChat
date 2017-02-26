@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseAuth
 
 class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -82,12 +83,13 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     } else {
                         print("MetaVideoResponse: \(meta)")
                         let downloadURL = meta?.downloadURL()
-                        //save this
+                        DataService.instance.sendMediaPullRequest(senderUID: (FIRAuth.auth()?.currentUser?.uid)!, sendingTo: self.selectedUsers, mediaURL: downloadURL!)
                         print("DownloadURLVideo: \(downloadURL)")
                         print("SelectedUsersVideo:\(self.selectedUsers)")
-                        self.dismiss(animated: true, completion: nil)
                     }
                 })
+                self.dismiss(animated: true, completion: nil)
+
             } else if let photo = _imageData {
                 if let imageToData: Data = UIImageJPEGRepresentation(photo, CGFloat(1.0)) {
                     print("Successfully transformed UIImage to Data: \(imageToData)")
@@ -102,9 +104,9 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             //save this
                             print("DownloadURLPhoto: \(downloadURL)")
                             print("SelectedUsersPhoto:\(self.selectedUsers)")
-                            self.dismiss(animated: true, completion: nil)
                         }
                     })
+                    self.dismiss(animated: true, completion: nil)
                 } else {
                     print("Error: UIImage to Data failed")
                 }

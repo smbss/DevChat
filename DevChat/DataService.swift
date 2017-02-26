@@ -45,4 +45,22 @@ class DataService {
             // Saving the profile Dictionary<String, AnyObject> to Firebase
         mainRef.child("users").child(uid).child("profile").setValue(profile)
     }
+    
+    func sendMediaPullRequest(senderUID: String, sendingTo: Dictionary<String, User>, mediaURL: URL) {
+        var uids = [String]()
+        for uid in sendingTo.keys {
+            uids.append(uid)
+        }
+        
+        let pr: Dictionary<String, AnyObject> = [
+            "mediaURL": mediaURL.absoluteString as AnyObject,
+            "userID": senderUID as AnyObject,
+            "openCount": 0 as AnyObject,
+            "recipients": uids as AnyObject
+        ]
+        
+            // Saving the pull request to the FirebaseDatabase
+        mainRef.child("pullRequests").childByAutoId().setValue(pr)
+            // .childByAutoId() creates a new child with a unique ID
+    }
 }
