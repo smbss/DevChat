@@ -84,6 +84,7 @@ class VideoViewController: UIViewController {
                 return
             }
         }
+
     }
     
     @objc fileprivate func playerItemDidReachEnd(_ notification: Notification) {

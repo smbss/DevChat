@@ -152,7 +152,7 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     }
     
     @objc private func userListButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "CameraToUserList", sender: nil)
+        performSegue(withIdentifier: "CameraToPendingMessages", sender: nil)
     }
     
     @objc private func signOutButtonPressed(_ sender: Any) {

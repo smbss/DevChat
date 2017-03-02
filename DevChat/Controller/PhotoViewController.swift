@@ -49,11 +49,6 @@ class PhotoViewController: UIViewController {
     
     func cancel() {
         discardImage = true
-        if let usersVC = presentedViewController as? UsersVC {
-            if discardImage {
-                usersVC.imageData = nil
-            }
-        }
         dismiss(animated: true, completion: nil)
     }
     
@@ -66,6 +61,7 @@ class PhotoViewController: UIViewController {
                 return
             }
         }
+ 
     }
     
 }

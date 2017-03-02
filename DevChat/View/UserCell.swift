@@ -2,8 +2,8 @@
 //  UserCell.swift
 //  DevChat
 //
-//  Created by Sandro Simes on 25/02/2017.
-//  Copyright © 2017 Cappsule. All rights reserved.
+//  Created by smbss on 25/02/2017.
+//  Copyright © 2017 smbss. All rights reserved.
 //
 
 import UIKit
@@ -19,8 +19,11 @@ class UserCell: UITableViewCell {
     }
     
     func setCheckmark(selected: Bool) {
-        let imageStr = selected ? "messageindicatorchecked1" : "messageindicator1"
-        self.accessoryView = UIImageView(image: UIImage(named: imageStr))
+        let imageStr = selected ? "checked3" : "unchecked3"
+        let checkboxView = UIImageView(image: UIImage(named: imageStr))
+        checkboxView.contentMode = .scaleAspectFit
+        checkboxView.frame.size = CGSize(width: 30, height: 30)
+        self.accessoryView = checkboxView
     }
     
     func updateUI(user: User) {

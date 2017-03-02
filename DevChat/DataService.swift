@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseAuth
 
 class DataService {
     private static let _instance = DataService()
@@ -28,6 +29,10 @@ class DataService {
         return mainRef.child("users")
     }
     
+    var userPendingMessagesRef: FIRDatabaseReference {
+        return usersRef.child((FIRAuth.auth()?.currentUser?.uid)!).child("pendingMessages")
+    }
+    
     var mainStorageRef: FIRStorageReference {
         return FIRStorage.storage().reference()
     }
@@ -41,26 +46,43 @@ class DataService {
     }
     
     func saveUser(uid: String, email: String, pass: String) {
-        let profile: Dictionary<String, AnyObject> = ["firstName": "" as AnyObject, "lastName": "" as AnyObject, "email": email as AnyObject, "pass": pass as AnyObject]
+        let profile: Dictionary<String, AnyObject> = ["email": email as AnyObject, "pass": pass as AnyObject]
             // Saving the profile Dictionary<String, AnyObject> to Firebase
         mainRef.child("users").child(uid).child("profile").setValue(profile)
     }
     
-    func sendMediaPullRequest(senderUID: String, sendingTo: Dictionary<String, User>, mediaURL: URL) {
+    func sendMediaPullRequest(sender: User, sendingTo: Dictionary<String, User>, mediaURL: URL, mediaType: String) {
+        let senderUID = sender.uid
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let dateCreated = dateFormatter.string(from: Date())
+        let messageUID = "\(dateCreated)-user-\(senderUID)"
+        
         var uids = [String]()
         for uid in sendingTo.keys {
             uids.append(uid)
         }
         
-        let pr: Dictionary<String, AnyObject> = [
+        let pendingMessage: Dictionary<String, AnyObject> = [
             "mediaURL": mediaURL.absoluteString as AnyObject,
-            "userID": senderUID as AnyObject,
+            "senderUID": senderUID as AnyObject,
+            "senderDisplayName": sender.displayName as AnyObject,
             "openCount": 0 as AnyObject,
-            "recipients": uids as AnyObject
+            "dateCreated": dateCreated as AnyObject,
+            "messageUID": messageUID as AnyObject,
+            "mediaType": mediaType as AnyObject
+        ]
+        
+        for uid in uids {
+            mainRef.child("users").child(uid).child("pendingMessages").child(messageUID).setValue(pendingMessage)
+        }
+        
+        let pullRequest: Dictionary<String, AnyObject> = [
+            "mediaURL": mediaURL.absoluteString as AnyObject,
+            "uncheckedReceivers": uids as AnyObject
         ]
         
             // Saving the pull request to the FirebaseDatabase
-        mainRef.child("pullRequests").childByAutoId().setValue(pr)
-            // .childByAutoId() creates a new child with a unique ID
+        mainRef.child("pullRequests").child(messageUID).setValue(pullRequest)
     }
 }

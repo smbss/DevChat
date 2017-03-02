@@ -16,6 +16,9 @@
 		168505E81E288B4C005B4537 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168505E71E288B4C005B4537 /* VideoViewController.swift */; };
 		168505EA1E288D80005B4537 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168505E91E288D80005B4537 /* PhotoViewController.swift */; };
 		1ED6EBB49F5E56145253E11A /* Pods_DevChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A1DF713C2EA28F4E14C77B /* Pods_DevChat.framework */; };
+		AA2903081E6453DD0065C9F3 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2903071E6453DD0065C9F3 /* MessageCell.swift */; };
+		AA29030E1E64597D0065C9F3 /* PendingMessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA29030D1E64597D0065C9F3 /* PendingMessagesVC.swift */; };
+		AA2903101E645D140065C9F3 /* PendingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA29030F1E645D140065C9F3 /* PendingMessage.swift */; };
 		AA3D78661E5DF43B005CD022 /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D78651E5DF43B005CD022 /* RoundTextField.swift */; };
 		AA3D78681E5DF483005CD022 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D78671E5DF483005CD022 /* RoundedButton.swift */; };
 		AA3D786A1E5DFE26005CD022 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D78691E5DFE26005CD022 /* LoginVC.swift */; };
@@ -44,6 +47,9 @@
 		168505E71E288B4C005B4537 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		168505E91E288D80005B4537 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		218AAECA2044BFAA6C884576 /* Pods-DevChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DevChat/Pods-DevChat.debug.xcconfig"; sourceTree = "<group>"; };
+		AA2903071E6453DD0065C9F3 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		AA29030D1E64597D0065C9F3 /* PendingMessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingMessagesVC.swift; sourceTree = "<group>"; };
+		AA29030F1E645D140065C9F3 /* PendingMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingMessage.swift; path = DevChat/Controller/PendingMessage.swift; sourceTree = SOURCE_ROOT; };
 		AA3D78651E5DF43B005CD022 /* RoundTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
 		AA3D78671E5DF483005CD022 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		AA3D78691E5DFE26005CD022 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -153,6 +159,7 @@
 				168505E91E288D80005B4537 /* PhotoViewController.swift */,
 				168505E71E288B4C005B4537 /* VideoViewController.swift */,
 				AA9A25E41E620A6200C0119B /* UsersVC.swift */,
+				AA29030D1E64597D0065C9F3 /* PendingMessagesVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -164,6 +171,7 @@
 				AA3D78651E5DF43B005CD022 /* RoundTextField.swift */,
 				AA3D78671E5DF483005CD022 /* RoundedButton.swift */,
 				AA9A25E61E62151100C0119B /* UserCell.swift */,
+				AA2903071E6453DD0065C9F3 /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				AA9A25E81E621C0400C0119B /* User.swift */,
+				AA29030F1E645D140065C9F3 /* PendingMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -302,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1675A9781E00A68300B80903 /* CameraVC.swift in Sources */,
+				AA2903101E645D140065C9F3 /* PendingMessage.swift in Sources */,
 				AAF230041E5E178B00DABE14 /* DataService.swift in Sources */,
 				AA9F97221E5D082D0074F308 /* SwiftyCamButton.swift in Sources */,
 				AA3D786A1E5DFE26005CD022 /* LoginVC.swift in Sources */,
@@ -317,7 +327,9 @@
 				168505EA1E288D80005B4537 /* PhotoViewController.swift in Sources */,
 				16298B561E2703DC0056D413 /* SwiftyRecordButton.swift in Sources */,
 				AA9F97241E5D082D0074F308 /* SwiftyCamViewControllerDelegate.swift in Sources */,
+				AA29030E1E64597D0065C9F3 /* PendingMessagesVC.swift in Sources */,
 				AA9F97231E5D082D0074F308 /* SwiftyCamViewController.swift in Sources */,
+				AA2903081E6453DD0065C9F3 /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

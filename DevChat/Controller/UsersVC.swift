@@ -2,8 +2,8 @@
 //  UsersVC.swift
 //  DevChat
 //
-//  Created by Sandro Simes on 25/02/2017.
-//  Copyright © 2017 Cappsule. All rights reserved.
+//  Created by smbss on 25/02/2017.
+//  Copyright © 2017 smbss. All rights reserved.
 //
 
 import UIKit
@@ -17,10 +17,12 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private var users = [User]()
     private var selectedUsers = Dictionary<String, User>()
-    
+    private var currentUser: User?
     private var _imageData: UIImage?
     private var _videoURL: URL?
     
+    let currentUserUID = FIRAuth.auth()?.currentUser?.uid
+
     var imageData: UIImage? {
         set {
             _imageData = newValue
@@ -39,24 +41,26 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsMultipleSelection = true
         
-            // Fetching user info - Only runs one time (alternative: observeChildAdded)
         DataService.instance.usersRef.observeSingleEvent(of: .value, with: { (snapshot: FIRDataSnapshot) in
-                // .value is a FIRDataEventType that asks for changed data
-            print("FIRSnapshot: ", snapshot.debugDescription)
+            print("FIRSnapshotUsers: ", snapshot.debugDescription)
             if let users = snapshot.value as? Dictionary<String, AnyObject> {
                 for (key, value) in users {
                     if let dict = value as? Dictionary<String, AnyObject> {
                         if let profile = dict["profile"] as? Dictionary<String, AnyObject> {
-                            if let firstName = profile["firstName"] as? String {
+                            if let email = profile["email"] as? String {
                                 let uid = key
-                                let displayName = firstName
+                                let displayName = email
                                 let user = User(uid: uid, displayName: displayName)
                                 self.users.append(user)
+                                if key == self.currentUserUID {
+                                    self.currentUser = user
+                                } else {
+                                    print("Could not assign currentUser")
+                                }
                             }
                         }
                     }
@@ -67,6 +71,8 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         })
     }
     
+
+    
     @IBAction func backToCamera(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -76,21 +82,20 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if let url = _videoURL {
                 let videoName = "\(NSUUID().uuidString)-URL-\(url))"
                 let ref = DataService.instance.videosStorageRef.child(videoName)
-                
                 _ = ref.putFile(url, metadata: nil, completion: { (meta: FIRStorageMetadata?, err: Error?) in
                     if err != nil {
                         print("Error uploading video: \(err?.localizedDescription)")
                     } else {
                         print("MetaVideoResponse: \(meta)")
                         let downloadURL = meta?.downloadURL()
-                        DataService.instance.sendMediaPullRequest(senderUID: (FIRAuth.auth()?.currentUser?.uid)!, sendingTo: self.selectedUsers, mediaURL: downloadURL!)
+                        DataService.instance.sendMediaPullRequest(sender: self.currentUser!, sendingTo: self.selectedUsers, mediaURL: downloadURL!, mediaType: "video")
                         print("DownloadURLVideo: \(downloadURL)")
                         print("SelectedUsersVideo:\(self.selectedUsers)")
                     }
                 })
                 self.dismiss(animated: true, completion: nil)
-
             } else if let photo = _imageData {
+                    // Transforming the UIImage received by PhotoVC into Data that is received by Firebase
                 if let imageToData: Data = UIImageJPEGRepresentation(photo, CGFloat(1.0)) {
                     print("Successfully transformed UIImage to Data: \(imageToData)")
                     let photoName = "\(NSUUID().uuidString).jpg"
@@ -101,7 +106,7 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         } else {
                             print("MetaPhotoResponse: \(meta)")
                             let downloadURL = meta?.downloadURL()
-                            //save this
+                            DataService.instance.sendMediaPullRequest(sender: self.currentUser!, sendingTo: self.selectedUsers, mediaURL: downloadURL!, mediaType: "image")
                             print("DownloadURLPhoto: \(downloadURL)")
                             print("SelectedUsersPhoto:\(self.selectedUsers)")
                         }
