@@ -3,7 +3,7 @@
 //  DevChat
 //
 //  Created by smbss on 22/02/2017.
-//  Copyright © 2017 smbss  All rights reserved.
+//  Copyright © 2017 smbss.  All rights reserved.
 //
 
 import Foundation
@@ -17,8 +17,6 @@ class DataService {
     static var instance: DataService {
         return _instance
     }
-    
-        // Using properties for FBreferences and fuctions for saving data
     
     var mainRef: FIRDatabaseReference {
             // Returns the reference to this specific app database
@@ -77,6 +75,8 @@ class DataService {
             mainRef.child("users").child(uid).child("pendingMessages").child(messageUID).setValue(pendingMessage)
         }
         
+            // Creating the dict that will save the receipients that already opened the message to notify the sender
+            // TO-DO: Needs implementation from the sender side (PendingMessagesVC)
         let pullRequest: Dictionary<String, AnyObject> = [
             "mediaURL": mediaURL.absoluteString as AnyObject,
             "uncheckedReceivers": uids as AnyObject

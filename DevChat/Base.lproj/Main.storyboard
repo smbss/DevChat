@@ -53,7 +53,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="ka2-9Y-oor">
+                                    <navigationItem title="Messages" id="ka2-9Y-oor">
                                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="FEZ-8C-2qu">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -294,7 +294,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="425-aZ-zhh">
+                                    <navigationItem title="Friends" id="425-aZ-zhh">
                                         <barButtonItem key="leftBarButtonItem" systemItem="camera" id="Zlo-Q7-6IX">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -382,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIh-JQ-GAT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="345" y="920"/>
+            <point key="canvasLocation" x="-4" y="920"/>
         </scene>
     </scenes>
     <resources>

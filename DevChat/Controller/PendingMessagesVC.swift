@@ -37,6 +37,7 @@ class PendingMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataS
                     }
                 }
             }
+            self.pendingMessages.sort(by: { $1.dateCreated! < $0.dateCreated! })
             self.tableView.reloadData()
             print("MessagesArray: \(self.pendingMessages)")
         })
