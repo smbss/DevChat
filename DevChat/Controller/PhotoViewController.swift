@@ -16,10 +16,13 @@ class PhotoViewController: UIViewController {
     
     private var backgroundImage: UIImage
     private var discardImage: Bool
+    private var sendButton: UIButton
+        // sendbutton needs to be instantiated because we may need to hide it
     
     init(image: UIImage) {
         self.discardImage = false
         self.backgroundImage = image
+        self.sendButton = UIButton() // Defined on addButtons()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,12 +36,17 @@ class PhotoViewController: UIViewController {
         let backgroundImageView = UIImageView(frame: view.frame)
         backgroundImageView.image = backgroundImage
         view.addSubview(backgroundImageView)
-        let cancelButton = UIButton(frame: CGRect(x: 10.0, y: 10.0, width: 30.0, height: 30.0))
+        addButtons()
+    }
+    
+    func addButtons() {
+        let cancelButton = UIButton(frame: CGRect(x: 30.0, y: 30.0, width: 30.0, height: 30.0))
         cancelButton.setImage(#imageLiteral(resourceName: "cancel"), for: UIControlState())
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         view.addSubview(cancelButton)
-        let sendButton = UIButton(frame: CGRect(x: view.frame.width/2 + 120, y: 10.0, width: 30, height: 30))
-        sendButton.setImage(#imageLiteral(resourceName: "send_snap"), for: UIControlState())
+        
+        self.sendButton = UIButton(frame: CGRect(x: view.frame.width/2 + 100, y: 30.0, width: 30, height: 30))
+        sendButton.setImage(#imageLiteral(resourceName: "send"), for: UIControlState())
         sendButton.addTarget(self, action: #selector(sendSnap), for: .touchUpInside)
         view.addSubview(sendButton)
     }
@@ -52,6 +60,12 @@ class PhotoViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let _ = presentingViewController as? PendingMessagesVC {
+            sendButton.isHidden = true
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         print("ViewWillDisappear - Photo § Discard: \(discardImage)")
         if let usersVC = presentingViewController as? CameraVC {
@@ -61,7 +75,6 @@ class PhotoViewController: UIViewController {
                 return
             }
         }
- 
     }
     
 }

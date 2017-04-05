@@ -10,6 +10,10 @@ import UIKit
 import FirebaseAuth
 
 class LoginVC: UIViewController, UITextFieldDelegate {
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
     @IBOutlet weak var emailField: RoundTextField!
     @IBOutlet weak var passwordField: RoundTextField!
@@ -22,7 +26,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewDidAppear(false)
             guard FIRAuth.auth()?.currentUser == nil else {
                 // Load Camera VC
             performSegue(withIdentifier: "LoginToCamera", sender: nil)

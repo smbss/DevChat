@@ -154,12 +154,12 @@
 		AA9F97251E5D09D10074F308 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1675A9771E00A68300B80903 /* CameraVC.swift */,
 				AA3D78691E5DFE26005CD022 /* LoginVC.swift */,
-				168505E91E288D80005B4537 /* PhotoViewController.swift */,
-				168505E71E288B4C005B4537 /* VideoViewController.swift */,
+				1675A9771E00A68300B80903 /* CameraVC.swift */,
 				AA9A25E41E620A6200C0119B /* UsersVC.swift */,
 				AA29030D1E64597D0065C9F3 /* PendingMessagesVC.swift */,
+				168505E91E288D80005B4537 /* PhotoViewController.swift */,
+				168505E71E288B4C005B4537 /* VideoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -167,11 +167,11 @@
 		AA9F97261E5D09E20074F308 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				16298B551E2703DC0056D413 /* SwiftyRecordButton.swift */,
-				AA3D78651E5DF43B005CD022 /* RoundTextField.swift */,
-				AA3D78671E5DF483005CD022 /* RoundedButton.swift */,
 				AA9A25E61E62151100C0119B /* UserCell.swift */,
 				AA2903071E6453DD0065C9F3 /* MessageCell.swift */,
+				AA3D78651E5DF43B005CD022 /* RoundTextField.swift */,
+				AA3D78671E5DF483005CD022 /* RoundedButton.swift */,
+				16298B551E2703DC0056D413 /* SwiftyRecordButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

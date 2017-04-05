@@ -17,7 +17,12 @@ struct User {
     }
     
     var displayName: String {
-        return _displayName
+            // Setter needed for UserVC currentUser.displayName change 
+        set {
+            _displayName = newValue
+        } get {
+            return _displayName
+        }
     }
     
     init(uid: String, displayName: String) {

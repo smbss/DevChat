@@ -10,6 +10,10 @@ import UIKit
 
 class PendingMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var pendingMessages = [PendingMessage]()
@@ -23,6 +27,20 @@ class PendingMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         print("PendingMessagesVC will appear")
+        fetchMessages()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        DataService.instance.userPendingMessagesRef.removeAllObservers()
+    }
+    
+    @IBAction func backToCamera(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func fetchMessages() {
+            // Fetching existing messages and listening for new ones
         DataService.instance.userPendingMessagesRef.observe(.value, with: { (snapshot) in
             print("FIRSnapshotMessages: ", snapshot.debugDescription)
             if let pendingMessages = snapshot.value as? Dictionary<String, AnyObject> {
@@ -37,21 +55,12 @@ class PendingMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataS
                     }
                 }
             }
+                // Sorting pendingMessages by most recent
             self.pendingMessages.sort(by: { $1.dateCreated! < $0.dateCreated! })
             self.tableView.reloadData()
             print("MessagesArray: \(self.pendingMessages)")
         })
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        DataService.instance.userPendingMessagesRef.removeAllObservers()
-    }
-    
-    @IBAction func backToCamera(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell") as! MessageCell
@@ -62,9 +71,11 @@ class PendingMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pendingMessage = pendingMessages[indexPath.row]
+        
         let messageRef = DataService.instance.userPendingMessagesRef.child(pendingMessage.messageUID!)
-        let openCountUpdated = pendingMessages[indexPath.row].openCount! + 1
+        let openCountUpdated = pendingMessage.openCount! + 1
         messageRef.updateChildValues(["openCount" : openCountUpdated])
+        
         if let mediaType = pendingMessage.mediaType {
             if let mediaUrlString = pendingMessage.mediaURL {
                 let url = URL(string: mediaUrlString)

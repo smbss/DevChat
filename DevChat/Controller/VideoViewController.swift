@@ -16,14 +16,18 @@ class VideoViewController: UIViewController {
         return true
     }
     
-    private var videoURL: URL
-    private var discardVideo: Bool
     var player: AVPlayer?
     var playerController : AVPlayerViewController?
+    
+    private var videoURL: URL
+    private var discardVideo: Bool
+    private var sendButton: UIButton
+        // sendbutton needs to be instantiated because we may need to hide it
     
     init(videoURL: URL) {
         self.discardVideo = false
         self.videoURL = videoURL
+        self.sendButton = UIButton() // Defined on addButtons()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,16 +53,19 @@ class VideoViewController: UIViewController {
         playerController!.view.frame = view.frame
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.player!.currentItem)
         
-        let cancelButton = UIButton(frame: CGRect(x: 10.0, y: 10.0, width: 30.0, height: 30.0))
+        addButtons()
+    }
+    
+    func addButtons() {
+        let cancelButton = UIButton(frame: CGRect(x: 30.0, y: 30.0, width: 30.0, height: 30.0))
         cancelButton.setImage(#imageLiteral(resourceName: "cancel"), for: UIControlState())
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         view.addSubview(cancelButton)
-        let sendButton = UIButton(frame: CGRect(x: view.frame.width/2 + 120, y: 10.0, width: 30, height: 30))
-        sendButton.setImage(#imageLiteral(resourceName: "send_snap"), for: UIControlState())
+        
+        self.sendButton = UIButton(frame: CGRect(x: view.frame.width/2 + 100, y: 30.0, width: 30, height: 30))
+        sendButton.setImage(#imageLiteral(resourceName: "send"), for: UIControlState())
         sendButton.addTarget(self, action: #selector(sendSnap), for: .touchUpInside)
         view.addSubview(sendButton)
-        print("view.frame.width: \(view.frame.width)")
-        print("view.frame.size.width: \(view.frame.width)")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,6 +80,13 @@ class VideoViewController: UIViewController {
     func cancel() {
         discardVideo = true
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let _ = presentingViewController as? PendingMessagesVC {
+            sendButton.isHidden = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

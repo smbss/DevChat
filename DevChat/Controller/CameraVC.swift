@@ -11,9 +11,13 @@ import FirebaseAuth
 
 class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     var mediaConfirmed: Bool!
-    var userListButton: UIButton!
-    var signOutButton: UIButton!
+//    var messageListButton: UIButton!
+//    var signOutButton: UIButton!
     var flipCameraButton: UIButton!
     var flashButton: UIButton!
     var captureButton: SwiftyRecordButton!
@@ -58,10 +62,6 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
             }
             return
         }
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -151,7 +151,7 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
         }
     }
     
-    @objc private func userListButtonPressed(_ sender: Any) {
+    @objc private func messageListButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "CameraToPendingMessages", sender: nil)
     }
     
@@ -183,15 +183,15 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
         flashButton.addTarget(self, action: #selector(toggleFlashAction(_:)), for: .touchUpInside)
         self.view.addSubview(flashButton)
         
-        signOutButton = UIButton(frame: CGRect(x: test, y: 50.0, width: 50.0, height: 50.0))
-        signOutButton.setImage(#imageLiteral(resourceName: "focus"), for: UIControlState())
+        let signOutButton = UIButton(frame: CGRect(x: view.frame.width/2 + 100, y: 30, width: 35.0, height: 35.0))
+        signOutButton.setImage(#imageLiteral(resourceName: "logOut"), for: UIControlState())
         signOutButton.addTarget(self, action: #selector(signOutButtonPressed(_:)), for: .touchUpInside)
         self.view.addSubview(signOutButton)
         
-        userListButton = UIButton(frame: CGRect(x: (((view.frame.width / 2 - 37.5) / 2) - 15.0), y: 50.0, width: 50.0, height: 50.0))
-        userListButton.setImage(#imageLiteral(resourceName: "cancel"), for: UIControlState())
-        userListButton.addTarget(self, action: #selector(userListButtonPressed(_:)), for: .touchUpInside)
-        self.view.addSubview(userListButton)
+        let messageListButton = UIButton(frame: CGRect(x: 30, y: 30, width: 35.0, height: 35.0))
+        messageListButton.setImage(#imageLiteral(resourceName: "messageList"), for: UIControlState())
+        messageListButton.addTarget(self, action: #selector(messageListButtonPressed(_:)), for: .touchUpInside)
+        self.view.addSubview(messageListButton)
     }
 }
 

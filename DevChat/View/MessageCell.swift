@@ -23,6 +23,7 @@ class MessageCell: UITableViewCell {
     func updateUI(pendingMessage: PendingMessage) {
         self.mediaType = pendingMessage.mediaType
         var imageStr = String()
+            // Setting the image for the MessageCell
         switch (pendingMessage.mediaType, pendingMessage.openCount) {
         case (.some("video"),.some(Int.min ... 0)):
             imageStr = "checked1"
@@ -38,7 +39,15 @@ class MessageCell: UITableViewCell {
         if !messageIcon.isHidden {
             messageIcon.image = UIImage(named: imageStr)
         }
-        displayName.text = pendingMessage.senderDisplayName
+        
+        guard pendingMessage.senderDisplayName == nil else {
+            if pendingMessage.senderUID == AuthService.instance.currentUserUID {
+                displayName.text = pendingMessage.senderDisplayName! + " (Me)"
+            } else {
+                displayName.text = pendingMessage.senderDisplayName
+            }
+          return
+        }
     }
 
 }

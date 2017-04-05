@@ -28,7 +28,7 @@ class DataService {
     }
     
     var userPendingMessagesRef: FIRDatabaseReference {
-        return usersRef.child((FIRAuth.auth()?.currentUser?.uid)!).child("pendingMessages")
+        return usersRef.child(AuthService.instance.currentUserUID).child("pendingMessages")
     }
     
     var mainStorageRef: FIRStorageReference {

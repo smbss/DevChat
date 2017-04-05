@@ -71,7 +71,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d9w-TK-ZOs" id="R9f-dM-teo">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wg1-lB-gXM">
@@ -311,25 +311,18 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pa3-J7-g1L">
-                                <rect key="frame" x="0.0" y="105" width="320" height="375"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UserCell" id="nUt-s9-17a" customClass="UserCell" customModule="DevChat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nUt-s9-17a" id="gjv-Ti-XRQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sM8-YK-uu5">
-                                                    <rect key="frame" x="8" y="7" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="COp-Jn-oZq"/>
-                                                        <constraint firstAttribute="width" constant="30" id="dun-Ru-vAU"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cashmeoussidehowbowdah" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXe-Se-8Zv">
-                                                    <rect key="frame" x="46" y="6" width="240" height="32"/>
+                                                    <rect key="frame" x="15" y="6" width="240" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="240" id="d67-gv-Nmv"/>
                                                         <constraint firstAttribute="height" constant="32" id="dn7-fL-S88"/>
@@ -341,9 +334,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="PXe-Se-8Zv" firstAttribute="centerY" secondItem="gjv-Ti-XRQ" secondAttribute="centerY" id="2N6-Sb-fhm"/>
-                                                <constraint firstItem="PXe-Se-8Zv" firstAttribute="leading" secondItem="sM8-YK-uu5" secondAttribute="trailing" constant="8" id="3Df-9t-VyR"/>
-                                                <constraint firstItem="sM8-YK-uu5" firstAttribute="leading" secondItem="gjv-Ti-XRQ" secondAttribute="leading" constant="8" id="UQ9-SY-ca4"/>
-                                                <constraint firstItem="sM8-YK-uu5" firstAttribute="centerY" secondItem="gjv-Ti-XRQ" secondAttribute="centerY" id="qrv-JO-DdH"/>
+                                                <constraint firstItem="PXe-Se-8Zv" firstAttribute="leading" secondItem="gjv-Ti-XRQ" secondAttribute="leading" constant="15" id="u7e-W9-8La"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -353,25 +344,14 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="KgK-Gd-f9S">
-                                <rect key="frame" x="0.0" y="60" width="320" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="nEF-sv-pa0"/>
-                                </constraints>
-                                <color key="barTintColor" red="0.36470588240000001" green="0.81176470590000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ah6-ik-LJU" firstAttribute="leading" secondItem="0Lg-DX-XM5" secondAttribute="leading" id="1n9-i4-I28"/>
                             <constraint firstAttribute="trailing" secondItem="ah6-ik-LJU" secondAttribute="trailing" id="5YV-bl-OFG"/>
-                            <constraint firstItem="pa3-J7-g1L" firstAttribute="top" secondItem="KgK-Gd-f9S" secondAttribute="bottom" id="8KS-P2-MLf"/>
-                            <constraint firstItem="KgK-Gd-f9S" firstAttribute="leading" secondItem="0Lg-DX-XM5" secondAttribute="leading" id="EBX-Oi-9t9"/>
                             <constraint firstAttribute="trailing" secondItem="pa3-J7-g1L" secondAttribute="trailing" id="SGZ-Db-pwM"/>
-                            <constraint firstAttribute="trailing" secondItem="KgK-Gd-f9S" secondAttribute="trailing" id="aVc-YF-eSZ"/>
+                            <constraint firstItem="pa3-J7-g1L" firstAttribute="top" secondItem="ah6-ik-LJU" secondAttribute="bottom" id="Zku-OD-bhF"/>
                             <constraint firstItem="ah6-ik-LJU" firstAttribute="top" secondItem="0Lg-DX-XM5" secondAttribute="top" id="arA-Z6-yD8"/>
-                            <constraint firstItem="KgK-Gd-f9S" firstAttribute="top" secondItem="ah6-ik-LJU" secondAttribute="bottom" id="ca7-Mx-YHq"/>
                             <constraint firstItem="CrM-8o-UW0" firstAttribute="top" secondItem="pa3-J7-g1L" secondAttribute="bottom" id="eGb-HB-YWW"/>
                             <constraint firstItem="pa3-J7-g1L" firstAttribute="leading" secondItem="0Lg-DX-XM5" secondAttribute="leading" id="oI7-cX-lpw"/>
                         </constraints>

@@ -9,9 +9,12 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
-import FirebaseAuth
 
 class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,8 +24,6 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private var _imageData: UIImage?
     private var _videoURL: URL?
     
-    let currentUserUID = FIRAuth.auth()?.currentUser?.uid
-
     var imageData: UIImage? {
         set {
             _imageData = newValue
@@ -44,7 +45,11 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsMultipleSelection = true
-        
+        fetchUsers()
+    }
+    
+    func fetchUsers() {
+            // Taking a single snapshot of the users in FirebaseDatabase
         DataService.instance.usersRef.observeSingleEvent(of: .value, with: { (snapshot: FIRDataSnapshot) in
             print("FIRSnapshotUsers: ", snapshot.debugDescription)
             if let users = snapshot.value as? Dictionary<String, AnyObject> {
@@ -54,12 +59,13 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             if let email = profile["email"] as? String {
                                 let uid = key
                                 let displayName = email
-                                let user = User(uid: uid, displayName: displayName)
-                                self.users.append(user)
-                                if key == self.currentUserUID {
+                                var user = User(uid: uid, displayName: displayName)
+                                if key == AuthService.instance.currentUserUID {
                                     self.currentUser = user
+                                    user.displayName += " (Me)"
+                                    self.users.insert(user, at: 0)
                                 } else {
-                                    print("Could not assign currentUser")
+                                    self.users.append(user)
                                 }
                             }
                         }
@@ -70,8 +76,6 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             print("UserArray: \(self.users)")
         })
     }
-    
-
     
     @IBAction func backToCamera(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -115,6 +119,8 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 } else {
                     print("Error: UIImage to Data failed")
                 }
+            } else {
+                print("Error: Tried to send message on UsersVC, but no photo or video was found")
             }
             return
         }
