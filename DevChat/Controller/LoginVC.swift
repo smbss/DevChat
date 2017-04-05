@@ -22,7 +22,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         emailField.delegate = self
         passwordField.delegate = self
-        print("CurrentUserUID: \(FIRAuth.auth()?.currentUser?.uid)")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,7 +36,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
 
     @IBAction func loginPressed(_ sender: AnyObject) {
         if let email = emailField.text, let pass = passwordField.text, (email.characters.count > 0 && pass.characters.count > 0) {
-            print("AuthService.instance.login \(email) and \(pass)")
                 // Call the login service
             AuthService.instance.login(email: email, password: pass, onComplete: { (errMsg, data) in
                 guard errMsg == nil else {

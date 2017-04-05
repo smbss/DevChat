@@ -90,7 +90,6 @@ class VideoViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("ViewWillDisappear - Video § Discard: \(discardVideo)")
         if let usersVC = self.presentingViewController as? CameraVC {
             guard discardVideo else {
                 usersVC.videoURL = self.videoURL

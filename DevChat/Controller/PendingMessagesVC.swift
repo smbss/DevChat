@@ -26,7 +26,6 @@ class PendingMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        print("PendingMessagesVC will appear")
         fetchMessages()
     }
     
@@ -42,7 +41,6 @@ class PendingMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     func fetchMessages() {
             // Fetching existing messages and listening for new ones
         DataService.instance.userPendingMessagesRef.observe(.value, with: { (snapshot) in
-            print("FIRSnapshotMessages: ", snapshot.debugDescription)
             if let pendingMessages = snapshot.value as? Dictionary<String, AnyObject> {
                 if self.pendingMessages.count > 0  {
                     self.pendingMessages.removeAll()
@@ -50,7 +48,6 @@ class PendingMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataS
                 for (key, value) in pendingMessages {
                     if let pendingMessage = value as? Dictionary<String, AnyObject> {
                         let message = PendingMessage(pendingMessageUID: key, pendingMessage: pendingMessage)
-                        print("PedingMessage: \(message)")
                         self.pendingMessages.append(message)
                     }
                 }
@@ -58,7 +55,6 @@ class PendingMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataS
                 // Sorting pendingMessages by most recent
             self.pendingMessages.sort(by: { $1.dateCreated! < $0.dateCreated! })
             self.tableView.reloadData()
-            print("MessagesArray: \(self.pendingMessages)")
         })
     }
     
@@ -83,16 +79,12 @@ class PendingMessagesVC: UIViewController, UITableViewDelegate, UITableViewDataS
                     let newVC = VideoViewController(videoURL: url!)
                     self.present(newVC, animated: true, completion: nil)
                 } else if mediaType == "image" {
-                    print("Opening image")
                     URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
                         if error != nil {
-                            print("URLSession data error: \(error?.localizedDescription)")
                             return
                         }
                         DispatchQueue.main.async {
                             if let image = UIImage(data: data!) {
-                                print("Image: \(image)")
-                                print("Image data: \(data)")
                                 let newVC = PhotoViewController(image: image)
                                 self.present(newVC, animated: true, completion: nil)
                             }

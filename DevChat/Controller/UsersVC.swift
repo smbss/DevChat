@@ -51,7 +51,6 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func fetchUsers() {
             // Taking a single snapshot of the users in FirebaseDatabase
         DataService.instance.usersRef.observeSingleEvent(of: .value, with: { (snapshot: FIRDataSnapshot) in
-            print("FIRSnapshotUsers: ", snapshot.debugDescription)
             if let users = snapshot.value as? Dictionary<String, AnyObject> {
                 for (key, value) in users {
                     if let dict = value as? Dictionary<String, AnyObject> {
@@ -73,7 +72,6 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
             }
             self.tableView.reloadData()
-            print("UserArray: \(self.users)")
         })
     }
     
@@ -88,31 +86,22 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 let ref = DataService.instance.videosStorageRef.child(videoName)
                 _ = ref.putFile(url, metadata: nil, completion: { (meta: FIRStorageMetadata?, err: Error?) in
                     if err != nil {
-                        print("Error uploading video: \(err?.localizedDescription)")
                     } else {
-                        print("MetaVideoResponse: \(meta)")
                         let downloadURL = meta?.downloadURL()
                         DataService.instance.sendMediaPullRequest(sender: self.currentUser!, sendingTo: self.selectedUsers, mediaURL: downloadURL!, mediaType: "video")
-                        print("DownloadURLVideo: \(downloadURL)")
-                        print("SelectedUsersVideo:\(self.selectedUsers)")
                     }
                 })
                 self.dismiss(animated: true, completion: nil)
             } else if let photo = _imageData {
                     // Transforming the UIImage received by PhotoVC into Data that is received by Firebase
                 if let imageToData: Data = UIImageJPEGRepresentation(photo, CGFloat(1.0)) {
-                    print("Successfully transformed UIImage to Data: \(imageToData)")
                     let photoName = "\(NSUUID().uuidString).jpg"
                     let ref = DataService.instance.imagesStorageRef.child(photoName)
                     _ = ref.put(imageToData as Data, metadata: nil, completion: { (meta: FIRStorageMetadata?, err: Error?) in
                         if err != nil {
-                            print("Error uploading photo: \(err?.localizedDescription)")
                         } else {
-                            print("MetaPhotoResponse: \(meta)")
                             let downloadURL = meta?.downloadURL()
                             DataService.instance.sendMediaPullRequest(sender: self.currentUser!, sendingTo: self.selectedUsers, mediaURL: downloadURL!, mediaType: "image")
-                            print("DownloadURLPhoto: \(downloadURL)")
-                            print("SelectedUsersPhoto:\(self.selectedUsers)")
                         }
                     })
                     self.dismiss(animated: true, completion: nil)
@@ -140,7 +129,6 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.setCheckmark(selected: true)
         let user = users[indexPath.row]
         selectedUsers[user.uid] = user
-        print("SelectedUsers1: \(selectedUsers)")
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -148,7 +136,6 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.setCheckmark(selected: false)
         let user = users[indexPath.row]
         selectedUsers.removeValue(forKey: user.uid)
-        print("SelectedUsers2: \(selectedUsers)")
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

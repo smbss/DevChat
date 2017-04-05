@@ -67,7 +67,6 @@ class PhotoViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("ViewWillDisappear - Photo § Discard: \(discardImage)")
         if let usersVC = presentingViewController as? CameraVC {
             guard discardImage else {
                 usersVC.imageData = self.backgroundImage

@@ -47,13 +47,10 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
         maximumVideoDuration = 10.0
         addButtons()
         mediaConfirmed = false
-        print("CurrentUserUID: \(FIRAuth.auth()?.currentUser?.uid)")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        print("VideoURL: \(videoURL)")
-        print("ImageData: \(imageData)")
         guard !mediaConfirmed else {
             if let video = videoURL {
                 performSegue(withIdentifier: "CameraToUserList", sender: video)
@@ -158,9 +155,7 @@ class CameraVC: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     @objc private func signOutButtonPressed(_ sender: Any) {
         do {
             try FIRAuth.auth()?.signOut()
-            print("Successfully signed out")
         } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
             showAlert(title: "Error signing out", message: signOutError.localizedDescription, buttonText: "Ok")
         }
         dismiss(animated: true, completion: nil)
